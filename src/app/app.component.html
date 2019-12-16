@@ -1,0 +1,45 @@
+<!--
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+-->
+<nav class="navbar navbar-inverse navbar-bg">
+		<ul class="nav navbar-nav">
+			<li class="dropdown active">
+				<a class="dropdown-toggle" data-toggle="dropdown">{{dropdownLabel}} &#8595;</a>
+				<ul class="dropdown-menu scrollable-menu">
+
+					<li><a (click)="addStudent(student1)">{{student1.name}}</a></li>
+					<li><a (click)="addStudent(student2)">{{student2.name}}</a></li>
+					<li><a (click)="addSupervisor(supervisor1)">{{supervisor1.title}} {{supervisor1.name}}</a></li>
+					<li><a (click)="addSupervisor(supervisor2)">{{supervisor2.title}} {{supervisor2.name}}</a></li>
+
+				</ul>
+			</li>
+		</ul>
+		<div class="navbar-dark"></div>
+		<div class="container-fluid links-container">
+			<div *ngIf="supervisorContext || studentContext" class="router-link"><a [routerLink]="['/Thesis']"
+																																							style="color:white; font-weight: bold">Lista
+				tematów</a></div>
+			<div class="router-link"><a [routerLink]="['/Supervisor']"
+																														style="color:white; font-weight: bold">Lista promotorów</a></div>
+			<div class="router-link"><a [routerLink]="['/Student']"
+																												 style="color:white; font-weight: bold">Lista studentów</a></div>
+			<div *ngIf="supervisorContext || studentContext" class="router-link"><a [routerLink]="['/myTheses']"
+																																							style="color:white; font-weight: bold">{{studentContext ? 'Mój temat' : ''}}{{supervisorContext ? 'Dodane przeze mnie' : ''}}</a>
+			</div>
+		</div>
+</nav>
+<router-outlet></router-outlet>
+<div class="footer">
+	<span>&#9400;  Przemysław Marciniak</span>
+</div>
